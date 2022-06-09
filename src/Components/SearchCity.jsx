@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useContext} from "react";
+import Context from "../../js/Context";
 
-function SearchCity({ setCurrentCity }) {
+function SearchCity() {
   const [inputValue, setInputValue] = useState('');
 
-  const handlerForecastData= (e) => {
+  const contextValues = useContext(Context);
+  const  { setCurrentCity } = contextValues;
+
+  const handlerForecastData = (e) => {
     e.preventDefault();
 
     const currentCity = inputValue;

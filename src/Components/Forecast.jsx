@@ -1,7 +1,12 @@
+import { useContext } from "react";
+import Context from "../../js/Context";
 import ForecastItem from "./ForecastItem";
 import { ForecastData } from "../../js/storage";
 
-function Forecast({nextForecast}) {
+function Forecast() {
+  const contextValues = useContext(Context);
+  const {nextForecast} = contextValues;
+
   const forecastToRender = [];
 
   if (!nextForecast) return;

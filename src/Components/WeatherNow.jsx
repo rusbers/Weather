@@ -1,4 +1,10 @@
-function WeatherNow({ currentWeather, favoriteCities, setFavoriteCities }) {
+import { useContext } from "react";
+import Context from "../../js/Context";
+
+function WeatherNow({ favoriteCities, setFavoriteCities }) {
+  const contextValues = useContext(Context);
+  const { currentWeather } = contextValues;
+
   const { degree, iconLink, city } = currentWeather;
 
   const handlerAddToFavorite = (cityName) => {

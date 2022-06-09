@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import WeatherNow from "./weatherNow";
 import WeatherDetails from "./WeatherDetails";
 import Forecast from "./Forecast";
 
-function Tabs({currentWeather, favoriteCities, setFavoriteCities, nextForecast}) {
+function Tabs({ favoriteCities, setFavoriteCities }) {
   const [tabIndex, setTabIndex] = useState(0);
 
   return (
@@ -15,13 +15,13 @@ function Tabs({currentWeather, favoriteCities, setFavoriteCities, nextForecast})
       </div>
       <div className="tabs-content">
         <div className={`tabs-content__item ${(tabIndex === 0) ? 'tabs-content__item--active' : ''} now`}>
-          <WeatherNow currentWeather={currentWeather} favoriteCities={favoriteCities} setFavoriteCities={setFavoriteCities}/>
+          <WeatherNow favoriteCities={favoriteCities} setFavoriteCities={setFavoriteCities}/>
         </div>
         <div className={`tabs-content__item ${(tabIndex === 1) ? 'tabs-content__item--active' : ''} details`}>
-          <WeatherDetails currentWeather={currentWeather}/>
+          <WeatherDetails />
         </div>
         <div className={`tabs-content__item ${(tabIndex === 2) ? 'tabs-content__item--active' : ''} scroll forecast`}>
-          <Forecast nextForecast={nextForecast} />
+          <Forecast />
         </div>
       </div>
     </div>

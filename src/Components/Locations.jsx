@@ -2,7 +2,7 @@ import LocationsItem from "./LocationsItem";
 
 function Locations(props) {
 
-  const { setFavoriteCities, favoriteCities, setCurrentCity } = props;
+  const { setFavoriteCities, favoriteCities } = props;
 
   const favoriteCitiesListToRender = [];
 
@@ -10,7 +10,6 @@ function Locations(props) {
     favoriteCitiesListToRender.push(<LocationsItem 
                                       favoriteCity={favoriteCity} 
                                       key={index} 
-                                      setCurrentCity={setCurrentCity}
                                       favoriteCities={favoriteCities}
                                       setFavoriteCities={setFavoriteCities}
                                     />)

@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Tabs from "./Tabs";
 import Locations from "./Locations";
 import { getFavoriteCities } from "../../js/storage";
+import Context from "../../js/Context";
 
-function WeatherContent(props) {
+function WeatherContent() {
   const [ favoriteCities, setFavoriteCities ] = useState([]);
 
-  const {currentWeather, currentCity, setCurrentCity, nextForecast} = props;
+  const contextValues = useContext(Context);
+  const { setCurrentCity } = contextValues;
 
   useEffect(() => {
     const cities = Array.from(getFavoriteCities());
@@ -26,8 +28,8 @@ function WeatherContent(props) {
 
   return (
     <div className="weather-content__inner">
-      <Tabs currentWeather={currentWeather} currentCity={currentCity} favoriteCities={favoriteCities} setFavoriteCities={setFavoriteCities} nextForecast={nextForecast}/>
-      <Locations setFavoriteCities={setFavoriteCities} favoriteCities={favoriteCities} setCurrentCity={setCurrentCity}/>
+      <Tabs favoriteCities={favoriteCities} setFavoriteCities={setFavoriteCities} />
+      <Locations favoriteCities={favoriteCities} setFavoriteCities={setFavoriteCities}/>
     </div>
   )
 }
