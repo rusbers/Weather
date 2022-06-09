@@ -3,13 +3,8 @@ import WeatherNow from "./weatherNow";
 import WeatherDetails from "./WeatherDetails";
 import Forecast from "./Forecast";
 
-function Tabs(props) {
-  const [tabIndex, setTabIndex] = useState(1);
-  const {currentWeather} = props;
-
-  useEffect(() => {
-    setTabIndex(0);
-  }, [])
+function Tabs({currentWeather, favoriteCities, setFavoriteCities, nextForecast}) {
+  const [tabIndex, setTabIndex] = useState(0);
 
   return (
     <div className="tabs">
@@ -20,13 +15,13 @@ function Tabs(props) {
       </div>
       <div className="tabs-content">
         <div className={`tabs-content__item ${(tabIndex === 0) ? 'tabs-content__item--active' : ''} now`}>
-          <WeatherNow currentWeather={currentWeather}/>
+          <WeatherNow currentWeather={currentWeather} favoriteCities={favoriteCities} setFavoriteCities={setFavoriteCities}/>
         </div>
         <div className={`tabs-content__item ${(tabIndex === 1) ? 'tabs-content__item--active' : ''} details`}>
-          <WeatherDetails />
+          <WeatherDetails currentWeather={currentWeather}/>
         </div>
-        <div className={`tabs-content__item ${(tabIndex === 2) ? 'tabs-content__item--active' : ''} forecast`}>
-          <Forecast />
+        <div className={`tabs-content__item ${(tabIndex === 2) ? 'tabs-content__item--active' : ''} scroll forecast`}>
+          <Forecast nextForecast={nextForecast} />
         </div>
       </div>
     </div>

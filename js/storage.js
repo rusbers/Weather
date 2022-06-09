@@ -8,4 +8,20 @@ function WeatherInfo(weatherData) {
   this.sunriseTime = weatherData.sys.sunrise;
 }
 
-export { WeatherInfo };
+function ForecastData(forecastDay) { 
+  this.time = forecastDay.dt;
+  this.temperature = Math.ceil(forecastDay.main.temp);
+  this.feelsLike = Math.ceil(forecastDay.main.feels_like);
+  this.icon = `url(https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png)`;
+  this.weather = forecastDay.weather[0].main;
+}
+
+const getFavoriteCities = () => {
+  const favoriteCities = JSON.parse(localStorage.getItem('favorite cities'));
+
+  return (favoriteCities) ? new Set(favoriteCities) : new Set();
+}
+
+export { WeatherInfo, ForecastData, getFavoriteCities };
+
+

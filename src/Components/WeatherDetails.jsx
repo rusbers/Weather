@@ -1,14 +1,32 @@
-function WeatherDetails() {
+import getDate from "../../js/date";
+
+function WeatherDetails({ currentWeather }) {
+  const { degree, city, howFeels, weather, sunsetTime, sunriseTime } = currentWeather;
 
   return (
     <>
-      <div className="details__city city__name"></div>
+      <div className="details__city city__name">{city}</div>
       <ul className="weather-list">
-        <li className="weather-list__item">{'Temperature: '}<span className="degrees degrees--weather"></span></li>
-        <li className="weather-list__item">{'Feels like: '}<span className="details-feel degrees degrees--weather"></span></li>
-        <li className="weather-list__item">{'Weather: '}<span className="detail-weather"></span></li>
-        <li className="weather-list__item">{'Sunrise: '}<span className="detail-sunrise"></span></li>
-        <li className="weather-list__item">{'Sunset: '}<span className="detail-sunset"></span></li>
+        <li className="weather-list__item">
+          {(degree) ? `Temperature ${degree}` : ''}
+          <span className={`degrees degrees--weather ${degree ? 'degrees--show' : ''}`}></span>
+        </li>
+        <li className="weather-list__item">
+          {(howFeels ? `Feels like: ${howFeels}` : '')}
+          <span className={`details-feel degrees degrees--weather ${degree ? 'degrees--show' : ''}`}></span>
+        </li>
+        <li className="weather-list__item">
+          {(weather) ? `Weather ${weather}` : ''}
+          <span className="detail-weather"></span>
+        </li>
+        <li className="weather-list__item">
+          {sunriseTime ? `Sunrise: ${getDate.hourMinutes(sunriseTime)}` : ''}
+          <span className="detail-sunrise"></span>
+        </li>
+        <li className="weather-list__item">
+          {sunsetTime ? `Sunset: ${getDate.hourMinutes(sunsetTime)}` : ''}
+          <span className="detail-sunset"></span>
+        </li>
       </ul>
     </>
   )

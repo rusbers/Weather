@@ -3,7 +3,7 @@ const API = {
     WEATHER: 'https://api.openweathermap.org/data/2.5/weather',
     FORECAST: 'https://api.openweathermap.org/data/2.5/forecast',
   },
-  KEY: 'f660a2fb1e4bad108d6160b7f58c555f',
+  KEY: '39f9c4703a56fdbd7410ee22a7d0e33a',
 };
 
 function getFetchUrl(api, currentCity) {

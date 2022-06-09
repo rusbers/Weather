@@ -1,40 +1,27 @@
-import {  useState } from "react";
-import { getFetchUrl } from "../../../WeatherApp/js/api";
-import { API } from "../../../WeatherApp/js/api";
-import { WeatherInfo } from "../../js/storage";
+import { useState } from "react";
 
-function SearchCity(props) {
+function SearchCity({ setCurrentCity }) {
   const [inputValue, setInputValue] = useState('');
-  const { setCurrentWeather} = props;
 
-  const handlerCityForecastData = async (e) => {
+  const handlerForecastData= (e) => {
     e.preventDefault();
 
     const currentCity = inputValue;
-    const fetchUrl = getFetchUrl(API.URL.WEATHER, currentCity);
 
-    try {
-      const fetchWeatherData = await fetch(fetchUrl);
-      const weatherData = await fetchWeatherData.json();
-      const showData = new WeatherInfo(weatherData);
-      setCurrentWeather(showData)
-      // console.log(showData)
-    } catch (error) {
-      console.log(error)
-    }
+    setCurrentCity(currentCity)
 
     setInputValue('');
   }
 
   return (
-    <form className="form" id="form" onSubmit={handlerCityForecastData}>
+    <form className="form" id="form" onSubmit={handlerForecastData}>
       <label>
         <span className="a11y-hidden">{'City name'}</span>
-        <input className="form__input" type="text" placeholder="City" value={inputValue} onChange={(e) => setInputValue(e.target.value)}/>
+        <input className="form__input" type="text" placeholder="City" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
       </label>
       <button className="form__button" type="submit">
         <span className="a11y-hidden">
-          {'Search'}
+          Search
         </span>
       </button>
     </form>

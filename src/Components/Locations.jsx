@@ -1,6 +1,20 @@
 import LocationsItem from "./LocationsItem";
 
-function Locations() {
+function Locations(props) {
+
+  const { setFavoriteCities, favoriteCities, setCurrentCity } = props;
+
+  const favoriteCitiesListToRender = [];
+
+  favoriteCities.forEach((favoriteCity, index) => {
+    favoriteCitiesListToRender.push(<LocationsItem 
+                                      favoriteCity={favoriteCity} 
+                                      key={index} 
+                                      setCurrentCity={setCurrentCity}
+                                      favoriteCities={favoriteCities}
+                                      setFavoriteCities={setFavoriteCities}
+                                    />)
+  })
 
   return (
     <div className="locations">
@@ -8,7 +22,7 @@ function Locations() {
       <div className="locations__inner">
         <div className="locations__content scroll">
           <ul className="locations__list">
-            {/* Here will be list of location items <LocationItem props={someProps}/>*/}
+            {favoriteCitiesListToRender}
           </ul>
         </div>
       </div>

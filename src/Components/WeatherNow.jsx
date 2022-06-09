@@ -1,16 +1,23 @@
-import { useEffect, useState } from "react";
+function WeatherNow({ currentWeather, favoriteCities, setFavoriteCities }) {
+  const { degree, iconLink, city } = currentWeather;
 
-function WeatherNow(props) {
-  const { currentWeather } = props;
-  // const { degree, iconLink, city, howFeels, weather, sunsetTime, sunriseTime } = currentWeather;
+  const handlerAddToFavorite = (cityName) => {
+    const [isCityinList] = favoriteCities.filter(city => city === cityName);
+
+    if (isCityinList === cityName) return;
+
+    setFavoriteCities((favoriteCities) => {
+      return [...favoriteCities, cityName];
+    });
+  } 
 
   return (
     <>
-      <div className="degrees degrees--weather">{currentWeather.degree}</div>
-      <div className="weather-icon"></div>
+      <div className={`degrees degrees--weather ${degree ? 'degrees--show' : ''}`}>{degree}</div>
+      <div className="weather-icon" style={{ backgroundImage: `${iconLink}` }}></div>
       <div className="city">
-        <span className="city__name">{props.city}</span>
-        <button className="add-favorite">
+        <span className="city__name">{city}</span>
+        <button className="add-favorite" onClick={() => handlerAddToFavorite(city)}>
           <span className="a11y-hidden">
             {'Push to add in favorite locations'}
           </span>

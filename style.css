@@ -159,7 +159,14 @@ a {
   height: 6px;
   position: absolute;
   right: -7px;
-  top: 5px;
+}
+
+.forecast .degrees--show::after {
+  top: -13px;
+}
+
+.details .degrees--show::after {
+  top: -18px;
 }
 
 .city {
