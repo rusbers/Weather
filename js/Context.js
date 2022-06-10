@@ -1,5 +1,6 @@
 import React from "react";
 
 const Context = React.createContext();
+const FavoriteCitiesContext = React.createContext();
 
-export default Context;
+export {Context, FavoriteCitiesContext};

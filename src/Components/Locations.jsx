@@ -1,18 +1,15 @@
 import LocationsItem from "./LocationsItem";
+import { FavoriteCitiesContext } from "../../js/Context";
+import { useContext } from "react";
 
-function Locations(props) {
-
-  const { setFavoriteCities, favoriteCities } = props;
+function Locations() {
+  const favCitiesContext = useContext(FavoriteCitiesContext);
+  const { favoriteCities } = favCitiesContext;
 
   const favoriteCitiesListToRender = [];
 
   favoriteCities.forEach((favoriteCity, index) => {
-    favoriteCitiesListToRender.push(<LocationsItem 
-                                      favoriteCity={favoriteCity} 
-                                      key={index} 
-                                      favoriteCities={favoriteCities}
-                                      setFavoriteCities={setFavoriteCities}
-                                    />)
+    favoriteCitiesListToRender.push(<LocationsItem favoriteCity={favoriteCity} key={index} />)
   })
 
   return (

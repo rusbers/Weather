@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Context from "../../js/Context";
+import {Context} from "../../js/Context";
 import getDate from "../../js/date";
 
 function WeatherDetails() {

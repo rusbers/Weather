@@ -1,5 +1,5 @@
 import { useState, useContext} from "react";
-import Context from "../../js/Context";
+import {Context} from "../../js/Context";
 
 function SearchCity() {
   const [inputValue, setInputValue] = useState('');

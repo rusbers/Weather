@@ -3,7 +3,7 @@ import WeatherNow from "./weatherNow";
 import WeatherDetails from "./WeatherDetails";
 import Forecast from "./Forecast";
 
-function Tabs({ favoriteCities, setFavoriteCities }) {
+function Tabs() {
   const [tabIndex, setTabIndex] = useState(0);
 
   return (
@@ -15,7 +15,7 @@ function Tabs({ favoriteCities, setFavoriteCities }) {
       </div>
       <div className="tabs-content">
         <div className={`tabs-content__item ${(tabIndex === 0) ? 'tabs-content__item--active' : ''} now`}>
-          <WeatherNow favoriteCities={favoriteCities} setFavoriteCities={setFavoriteCities}/>
+          <WeatherNow />
         </div>
         <div className={`tabs-content__item ${(tabIndex === 1) ? 'tabs-content__item--active' : ''} details`}>
           <WeatherDetails />

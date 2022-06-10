@@ -3,18 +3,12 @@ import SearchCity from "./SearchCity"
 import WeatherContent from "./WeatherContent"
 import { API, getFetchUrl } from "../../js/api";
 import { WeatherInfo } from "../../js/storage";
-import Context from "../../js/Context";
+import { Context } from "../../js/Context";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState({});
   const [currentCity, setCurrentCity] = useState('');
   const [nextForecast, setNextForecast] = useState([]);
-
-  const contextValues = {
-    currentWeather,
-    setCurrentCity,
-    nextForecast
-  }
 
   const getCurrentForecast = async (currentCity) => {
 
@@ -52,7 +46,7 @@ function App() {
   return (
     <div className="container">
       <div className="weather-content">
-        <Context.Provider value={contextValues}>
+        <Context.Provider value={{ currentWeather, setCurrentCity, nextForecast}}>
           <SearchCity />
           <WeatherContent />
         </Context.Provider>

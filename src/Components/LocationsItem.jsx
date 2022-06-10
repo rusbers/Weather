@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import Context from "../../js/Context";
+import {Context, FavoriteCitiesContext } from "../../js/Context";
 
-function LocationsItem(props) {
-
-  const { favoriteCities, setFavoriteCities, favoriteCity } = props;
-
+function LocationsItem({ favoriteCity }) {
   const contextValues = useContext(Context);
   const {setCurrentCity} = contextValues;
+
+  const favCitiesContext = useContext(FavoriteCitiesContext);
+  const { favoriteCities, setFavoriteCities } = favCitiesContext;
 
   const handlerSetCurrentCity = () => {
     setCurrentCity(favoriteCity);

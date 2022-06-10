@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import Context from "../../js/Context";
+import { Context, FavoriteCitiesContext } from "../../js/Context";
 
-function WeatherNow({ favoriteCities, setFavoriteCities }) {
+function WeatherNow() {
   const contextValues = useContext(Context);
   const { currentWeather } = contextValues;
-
   const { degree, iconLink, city } = currentWeather;
+
+  const favCitiesContext = useContext(FavoriteCitiesContext);
+  const { favoriteCities, setFavoriteCities } = favCitiesContext;
 
   const handlerAddToFavorite = (cityName) => {
     const [isCityinList] = favoriteCities.filter(city => city === cityName);
@@ -15,7 +17,7 @@ function WeatherNow({ favoriteCities, setFavoriteCities }) {
     setFavoriteCities((favoriteCities) => {
       return [...favoriteCities, cityName];
     });
-  } 
+  }   
 
   return (
     <>
