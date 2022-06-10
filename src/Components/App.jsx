@@ -10,6 +10,13 @@ function App() {
   const [currentCity, setCurrentCity] = useState('');
   const [nextForecast, setNextForecast] = useState([]);
 
+  useEffect(() => {
+    if (!currentCity) return;
+
+    getCurrentForecast(currentCity)
+    getFutureForecast(currentCity)
+  }, [currentCity])
+
   const getCurrentForecast = async (cityName) => {
     try {
       const currentForecast = await forecastRequest(API.URL.WEATHER, cityName);
@@ -28,13 +35,6 @@ function App() {
       console.log(error);
     }
   }
-
-  useEffect(() => {
-    if (!currentCity) return;
-
-    getCurrentForecast(currentCity)
-    getFutureForecast(currentCity)
-  }, [currentCity])
 
   return (
     <div className="container">
