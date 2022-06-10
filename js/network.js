@@ -13,4 +13,14 @@ function getFetchUrl(api, currentCity) {
   return (api === API.URL.WEATHER) ? currentWeatherUrl : forecastUrl;
 }
 
-export { API, getFetchUrl };
+async function forecastRequest(url, cityName ) {
+  const fetchUrl = getFetchUrl(url, cityName);
+
+  const fetchData = await fetch(fetchUrl);
+
+  return await fetchData.json();
+}
+
+
+
+export { API, getFetchUrl, forecastRequest };

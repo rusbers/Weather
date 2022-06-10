@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import {Context} from "../../js/Context";
+import {WeatherContext} from "../../js/Context";
 import getDate from "../../js/date";
 
 function WeatherDetails() {
-  const contextValues = useContext(Context);
+  const contextValues = useContext(WeatherContext);
   const {currentWeather} = contextValues;
   const { degree, city, howFeels, weather, sunsetTime, sunriseTime } = currentWeather;
 

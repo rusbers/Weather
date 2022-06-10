@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import {Context} from "../../js/Context";
+import {WeatherContext} from "../../js/Context";
 import ForecastItem from "./ForecastItem";
 import { ForecastData } from "../../js/storage";
 
 function Forecast() {
-  const contextValues = useContext(Context);
+  const contextValues = useContext(WeatherContext);
   const {nextForecast} = contextValues;
 
   const forecastToRender = [];

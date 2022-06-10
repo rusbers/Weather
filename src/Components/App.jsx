@@ -1,38 +1,31 @@
 import React, { useState, useEffect } from "react"
 import SearchCity from "./SearchCity"
 import WeatherContent from "./WeatherContent"
-import { API, getFetchUrl } from "../../js/api";
+import { API, forecastRequest } from "../../js/network";
 import { WeatherInfo } from "../../js/storage";
-import { Context } from "../../js/Context";
+import { WeatherContext } from "../../js/Context";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState({});
   const [currentCity, setCurrentCity] = useState('');
   const [nextForecast, setNextForecast] = useState([]);
 
-  const getCurrentForecast = async (currentCity) => {
-
-    const fetchUrl = getFetchUrl(API.URL.WEATHER, currentCity);
-
+  const getCurrentForecast = async (cityName) => {
     try {
-      const fetchWeatherData = await fetch(fetchUrl);
-      const weatherData = await fetchWeatherData.json();
-      const showData = new WeatherInfo(weatherData);
-      setCurrentWeather(showData)
+      const currentForecast = await forecastRequest(API.URL.WEATHER, cityName);
+      const showData = new WeatherInfo(currentForecast);
+      setCurrentWeather(showData);
     } catch (error) {
-      console.log(error)
+      console.log(error) // to figure out how to handle the error!
     }
   }
 
-  const getFutureForecast = async (currentCity) => {
-    const fetchUrl = getFetchUrl(API.URL.FORECAST, currentCity);
-
+  const getFutureForecast = async (cityName) => {
     try {
-      const fetchForecastData = await fetch(fetchUrl);
-      const forecastData = await fetchForecastData.json();
-      setNextForecast(forecastData.list);
-    } catch (error) {
-      console.log(error)
+      const futureForecast = await forecastRequest(API.URL.FORECAST, cityName);
+      setNextForecast(futureForecast.list);
+    } catch(error) {
+      console.log(error);
     }
   }
 
@@ -46,10 +39,10 @@ function App() {
   return (
     <div className="container">
       <div className="weather-content">
-        <Context.Provider value={{ currentWeather, setCurrentCity, nextForecast}}>
+        <WeatherContext.Provider value={{ currentWeather, setCurrentCity, nextForecast}}>
           <SearchCity />
           <WeatherContent />
-        </Context.Provider>
+        </WeatherContext.Provider>
       </div>
     </div>
   )

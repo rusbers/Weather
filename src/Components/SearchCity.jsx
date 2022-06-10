@@ -1,10 +1,10 @@
 import { useState, useContext} from "react";
-import {Context} from "../../js/Context";
+import {WeatherContext} from "../../js/Context";
 
 function SearchCity() {
   const [inputValue, setInputValue] = useState('');
 
-  const contextValues = useContext(Context);
+  const contextValues = useContext(WeatherContext);
   const  { setCurrentCity } = contextValues;
 
   const handlerForecastData = (e) => {

@@ -2,12 +2,12 @@ import { useState, useEffect, useContext } from "react";
 import Tabs from "./Tabs";
 import Locations from "./Locations";
 import { getFavoriteCities } from "../../js/storage";
-import { Context, FavoriteCitiesContext } from "../../js/Context";
+import { WeatherContext, FavoriteCitiesContext } from "../../js/Context";
 
 function WeatherContent() {
   const [favoriteCities, setFavoriteCities] = useState([]);
 
-  const contextValues = useContext(Context);
+  const contextValues = useContext(WeatherContext);
   const { setCurrentCity } = contextValues;
 
   useEffect(() => {
