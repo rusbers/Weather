@@ -4,8 +4,8 @@ import ForecastItem from "./ForecastItem";
 import { ForecastData } from "../../js/storage";
 
 function Forecast() {
-  const contextValues = useContext(WeatherContext);
-  const {nextForecast} = contextValues;
+  const weatherContextValues = useContext(WeatherContext);
+  const {nextForecast} = weatherContextValues;
 
   const forecastToRender = [];
 

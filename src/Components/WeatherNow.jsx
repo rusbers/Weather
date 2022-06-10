@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { WeatherContext, FavoriteCitiesContext } from "../../js/Context";
 
 function WeatherNow() {
-  const contextValues = useContext(WeatherContext);
-  const { currentWeather } = contextValues;
+  const weatherContextValues = useContext(WeatherContext);
+  const { currentWeather } = weatherContextValues;
   const { degree, iconLink, city } = currentWeather;
 
   const favCitiesContext = useContext(FavoriteCitiesContext);

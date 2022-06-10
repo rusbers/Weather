@@ -4,8 +4,8 @@ import {WeatherContext} from "../../js/Context";
 function SearchCity() {
   const [inputValue, setInputValue] = useState('');
 
-  const contextValues = useContext(WeatherContext);
-  const  { setCurrentCity } = contextValues;
+  const weatherContextValues = useContext(WeatherContext);
+  const  { setCurrentCity } = weatherContextValues;
 
   const handlerForecastData = (e) => {
     e.preventDefault();

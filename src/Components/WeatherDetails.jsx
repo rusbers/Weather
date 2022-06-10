@@ -3,8 +3,8 @@ import {WeatherContext} from "../../js/Context";
 import getDate from "../../js/date";
 
 function WeatherDetails() {
-  const contextValues = useContext(WeatherContext);
-  const {currentWeather} = contextValues;
+  const weatherContextValues = useContext(WeatherContext);
+  const {currentWeather} = weatherContextValues;
   const { degree, city, howFeels, weather, sunsetTime, sunriseTime } = currentWeather;
 
   return (

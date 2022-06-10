@@ -7,8 +7,8 @@ import { WeatherContext, FavoriteCitiesContext } from "../../js/Context";
 function WeatherContent() {
   const [favoriteCities, setFavoriteCities] = useState([]);
 
-  const contextValues = useContext(WeatherContext);
-  const { setCurrentCity } = contextValues;
+  const weatherContextValues = useContext(WeatherContext);
+  const { setCurrentCity } = weatherContextValues;
 
   useEffect(() => {
     const cities = Array.from(getFavoriteCities());

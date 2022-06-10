@@ -2,8 +2,8 @@ import { useContext } from "react";
 import {WeatherContext, FavoriteCitiesContext } from "../../js/Context";
 
 function LocationsItem({ favoriteCity }) {
-  const contextValues = useContext(WeatherContext);
-  const {setCurrentCity} = contextValues;
+  const weatherContextValues = useContext(WeatherContext);
+  const {setCurrentCity} = weatherContextValues;
 
   const favCitiesContext = useContext(FavoriteCitiesContext);
   const { favoriteCities, setFavoriteCities } = favCitiesContext;
