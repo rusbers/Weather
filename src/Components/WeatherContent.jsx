@@ -11,15 +11,15 @@ function WeatherContent() {
   const { setCurrentCity } = weatherContextValues;
 
   useEffect(() => {
-    const cities = Array.from(getFavoriteCities());
+    const favCities = getFavoriteCities();
 
-    if (!cities) return;
+    if (!favCities) return;
 
-    const currentFavoriteCity = cities.at(-1);
+    const currentFavoriteCity = favCities.at(-1);
 
     setCurrentCity(currentFavoriteCity);
 
-    setFavoriteCities(cities);
+    setFavoriteCities(favCities);
   }, [])
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function WeatherContent() {
     <FavoriteCitiesContext.Provider value={{favoriteCities, setFavoriteCities}}>
       <div className="weather-content__inner">
         <Tabs />
-        <Locations favoriteCities={favoriteCities} setFavoriteCities={setFavoriteCities} />
+        <Locations />
       </div>
     </FavoriteCitiesContext.Provider>
   )

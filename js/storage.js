@@ -19,7 +19,7 @@ function ForecastData(forecastDay) {
 const getFavoriteCities = () => {
   const favoriteCities = JSON.parse(localStorage.getItem('favorite cities'));
 
-  return (favoriteCities) ? new Set(favoriteCities) : new Set();
+  return (favoriteCities) ? favoriteCities : [];
 }
 
 export { WeatherInfo, ForecastData, getFavoriteCities };
