@@ -1,14 +1,13 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect } from "react";
 import Tabs from "./Tabs";
 import Locations from "./Locations";
 import { getFavoriteCities } from "../../js/storage";
-import { WeatherContext, FavoriteCitiesContext } from "../../js/Context";
+import { useDispatch, useSelector } from "react-redux";
+import { SET_CURRENT_CITY, SET_FAVORITE_CITIES } from "../../js/store/store";
 
 function WeatherContent() {
-  const [favoriteCities, setFavoriteCities] = useState([]);
-
-  const weatherContextValues = useContext(WeatherContext);
-  const { setCurrentCity } = weatherContextValues;
+  const favoriteCities = useSelector(state => state.favoriteCities);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const favCities = getFavoriteCities();
@@ -17,9 +16,8 @@ function WeatherContent() {
 
     const currentFavoriteCity = favCities.at(-1);
 
-    setCurrentCity(currentFavoriteCity);
-
-    setFavoriteCities(favCities);
+    dispatch({type: SET_CURRENT_CITY, cityName: currentFavoriteCity})
+    dispatch({type: SET_FAVORITE_CITIES, favoriteCities: favCities})
   }, [])
 
   useEffect(() => {
@@ -27,12 +25,10 @@ function WeatherContent() {
   }, [favoriteCities])
 
   return (
-    <FavoriteCitiesContext.Provider value={{favoriteCities, setFavoriteCities}}>
       <div className="weather-content__inner">
         <Tabs />
         <Locations />
       </div>
-    </FavoriteCitiesContext.Provider>
   )
 }
 

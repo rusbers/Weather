@@ -1,19 +1,16 @@
-import { useContext } from "react";
-import {WeatherContext, FavoriteCitiesContext } from "../../js/Context";
+import { REMOVE_CITY_FROM_FAVORITES, store } from "../../js/store/store";
+import { useDispatch } from "react-redux";
+import { SET_CURRENT_CITY } from "../../js/store/store";
 
 function LocationsItem({ favoriteCity }) {
-  const weatherContextValues = useContext(WeatherContext);
-  const {setCurrentCity} = weatherContextValues;
-
-  const favCitiesContext = useContext(FavoriteCitiesContext);
-  const { favoriteCities, setFavoriteCities } = favCitiesContext;
+  const dispatch = useDispatch();
 
   const handlerSetCurrentCity = () => {
-    setCurrentCity(favoriteCity);
+    dispatch({type: SET_CURRENT_CITY, cityName: favoriteCity})
   }
 
   const handlerRemoveFavoriteCity = () => {
-    setFavoriteCities(() => favoriteCities.filter((city) => city !== favoriteCity))
+    dispatch({type: REMOVE_CITY_FROM_FAVORITES, cityToRemove: favoriteCity})
   }
 
   return (

@@ -1,11 +1,9 @@
-import { useContext } from "react";
-import {WeatherContext} from "../../js/Context";
 import ForecastItem from "./ForecastItem";
 import { ForecastData } from "../../js/storage";
+import { useSelector } from "react-redux";
 
 function Forecast() {
-  const weatherContextValues = useContext(WeatherContext);
-  const {nextForecast} = weatherContextValues;
+  const nextForecast = useSelector(state => state.nextForecast);
 
   const forecastToRender = [];
 

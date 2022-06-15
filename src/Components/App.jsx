@@ -1,37 +1,39 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import SearchCity from "./SearchCity"
 import WeatherContent from "./WeatherContent"
 import { API, forecastRequest } from "../../js/network";
 import { WeatherInfo } from "../../js/storage";
-import { WeatherContext } from "../../js/Context";
+import { SET_CURRENT_FORECAST, SET_NEXT_FORECAST } from "../../js/store/store";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
-  const [currentWeather, setCurrentWeather] = useState({});
-  const [currentCity, setCurrentCity] = useState('');
-  const [nextForecast, setNextForecast] = useState([]);
+  const currentCity = useSelector(state => state.currentCity);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!currentCity) return;
-
     getCurrentForecast(currentCity)
     getFutureForecast(currentCity)
   }, [currentCity])
 
-  const getCurrentForecast = async (cityName) => {
+  async function getCurrentForecast(cityName) {
     try {
       const currentForecast = await forecastRequest(API.URL.WEATHER, cityName);
+
       const showData = new WeatherInfo(currentForecast);
-      setCurrentWeather(showData);
+
+      dispatch({ type: SET_CURRENT_FORECAST, currentForecast: showData })
     } catch (error) {
       console.log(error) // to figure out how to handle the error!
     }
   }
 
-  const getFutureForecast = async (cityName) => {
+  async function getFutureForecast(cityName) {
     try {
       const futureForecast = await forecastRequest(API.URL.FORECAST, cityName);
-      setNextForecast(futureForecast.list);
-    } catch(error) {
+
+      dispatch({ type: SET_NEXT_FORECAST, nextForecast: futureForecast.list })
+    } catch (error) {
       console.log(error);
     }
   }
@@ -39,10 +41,8 @@ function App() {
   return (
     <div className="container">
       <div className="weather-content">
-        <WeatherContext.Provider value={{ currentWeather, setCurrentCity, nextForecast}}>
-          <SearchCity />
-          <WeatherContent />
-        </WeatherContext.Provider>
+        <SearchCity />
+        <WeatherContent />
       </div>
     </div>
   )

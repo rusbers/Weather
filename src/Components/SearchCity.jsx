@@ -1,18 +1,18 @@
-import { useState, useContext} from "react";
-import {WeatherContext} from "../../js/Context";
+import { useState } from "react";
+import { SET_CURRENT_CITY } from "../../js/store/store";
+import { useDispatch } from "react-redux";
 
 function SearchCity() {
   const [inputValue, setInputValue] = useState('');
-
-  const weatherContextValues = useContext(WeatherContext);
-  const  { setCurrentCity } = weatherContextValues;
+  
+  const dispatch = useDispatch();
 
   const handlerForecastData = (e) => {
     e.preventDefault();
 
     const currentCity = inputValue;
 
-    setCurrentCity(currentCity)
+    dispatch({type: SET_CURRENT_CITY, cityName: currentCity})
 
     setInputValue('');
   }

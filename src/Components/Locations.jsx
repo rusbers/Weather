@@ -1,10 +1,8 @@
 import LocationsItem from "./LocationsItem";
-import { FavoriteCitiesContext } from "../../js/Context";
-import { useContext } from "react";
+import { useSelector } from "react-redux";
 
 function Locations() {
-  const favCitiesContext = useContext(FavoriteCitiesContext);
-  const { favoriteCities } = favCitiesContext;
+  const favoriteCities = useSelector(state => state.favoriteCities)
 
   const favoriteCitiesListToRender = [];
 

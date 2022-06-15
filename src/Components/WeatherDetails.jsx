@@ -1,11 +1,9 @@
-import { useContext } from "react";
-import {WeatherContext} from "../../js/Context";
+import { useSelector } from "react-redux";
 import getDate from "../../js/date";
 
 function WeatherDetails() {
-  const weatherContextValues = useContext(WeatherContext);
-  const {currentWeather} = weatherContextValues;
-  const { degree, city, howFeels, weather, sunsetTime, sunriseTime } = currentWeather;
+  const currentForecast = useSelector(state => state.currentForecast);
+  const { degree, city, howFeels, weather, sunsetTime, sunriseTime } = currentForecast;
 
   return (
     <>

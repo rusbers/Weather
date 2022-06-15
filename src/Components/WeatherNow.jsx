@@ -1,22 +1,19 @@
-import { useContext } from "react";
-import { WeatherContext, FavoriteCitiesContext } from "../../js/Context";
+import { useDispatch, useSelector } from "react-redux";
+import { ADD_FAVORITE_CITY } from "../../js/store/store";
 
 function WeatherNow() {
-  const weatherContextValues = useContext(WeatherContext);
-  const { currentWeather } = weatherContextValues;
-  const { degree, iconLink, city } = currentWeather;
+  const dispatch = useDispatch()
+  const currentForecast = useSelector(state => state.currentForecast);
+  const { degree, iconLink, city } = currentForecast;
 
-  const favCitiesContext = useContext(FavoriteCitiesContext);
-  const { favoriteCities, setFavoriteCities } = favCitiesContext;
+  const favoriteCities = useSelector(state => state.favoriteCities)
 
   const handlerAddToFavorite = (cityName) => {
     const [isCityinList] = favoriteCities.filter(city => city === cityName);
 
     if (isCityinList === cityName) return;
 
-    setFavoriteCities((favoriteCities) => {
-      return [...favoriteCities, cityName];
-    });
+    dispatch({type: ADD_FAVORITE_CITY, newFavoriteCity: cityName})
   }   
 
   return (
