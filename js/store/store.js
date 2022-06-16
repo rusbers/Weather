@@ -1,14 +1,16 @@
-import { legacy_createStore as createStore} from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import forecastReducer from './reducers/forecastReducer';
 import favoriteCitiesReducer from './reducers/favoriteCitiesReducer';
-import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({
-  forecast: forecastReducer,
-  favorites: favoriteCitiesReducer
-});
-
-const store = createStore(rootReducer);
+const store = configureStore({
+  reducer: {
+    forecast: forecastReducer,
+    favorites: favoriteCitiesReducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
+})
 
 export { store };
-
