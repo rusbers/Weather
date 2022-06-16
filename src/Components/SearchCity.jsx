@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { SET_CURRENT_CITY } from "../../js/store/store";
+import { setCurrentCity } from "../../js/store/action/actionCreators";
 import { useDispatch } from "react-redux";
 
 function SearchCity() {
   const [inputValue, setInputValue] = useState('');
-  
+
   const dispatch = useDispatch();
 
   const handlerForecastData = (e) => {
@@ -12,7 +12,7 @@ function SearchCity() {
 
     const currentCity = inputValue;
 
-    dispatch({type: SET_CURRENT_CITY, cityName: currentCity})
+    dispatch(setCurrentCity(currentCity));
 
     setInputValue('');
   }

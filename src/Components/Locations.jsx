@@ -2,7 +2,7 @@ import LocationsItem from "./LocationsItem";
 import { useSelector } from "react-redux";
 
 function Locations() {
-  const favoriteCities = useSelector(state => state.favoriteCities)
+  const favoriteCities = useSelector(state => state.favorites.favoriteCities)
 
   const favoriteCitiesListToRender = [];
 

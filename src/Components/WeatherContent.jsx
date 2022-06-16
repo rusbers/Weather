@@ -3,10 +3,10 @@ import Tabs from "./Tabs";
 import Locations from "./Locations";
 import { getFavoriteCities } from "../../js/storage";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_CURRENT_CITY, SET_FAVORITE_CITIES } from "../../js/store/store";
+import { setCurrentCity, setFavoriteCities } from "../../js/store/action/actionCreators";
 
 function WeatherContent() {
-  const favoriteCities = useSelector(state => state.favoriteCities);
+  const favoriteCities = useSelector(state => state.favorites.favoriteCities);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,8 +16,8 @@ function WeatherContent() {
 
     const currentFavoriteCity = favCities.at(-1);
 
-    dispatch({type: SET_CURRENT_CITY, cityName: currentFavoriteCity})
-    dispatch({type: SET_FAVORITE_CITIES, favoriteCities: favCities})
+    dispatch(setCurrentCity(currentFavoriteCity));
+    dispatch(setFavoriteCities(favCities))
   }, [])
 
   useEffect(() => {
@@ -25,10 +25,10 @@ function WeatherContent() {
   }, [favoriteCities])
 
   return (
-      <div className="weather-content__inner">
-        <Tabs />
-        <Locations />
-      </div>
+    <div className="weather-content__inner">
+      <Tabs />
+      <Locations />
+    </div>
   )
 }
 

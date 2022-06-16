@@ -1,16 +1,15 @@
-import { REMOVE_CITY_FROM_FAVORITES, store } from "../../js/store/store";
 import { useDispatch } from "react-redux";
-import { SET_CURRENT_CITY } from "../../js/store/store";
+import { setCurrentCity, removeCityFromFavorites } from "../../js/store/action/actionCreators";
 
 function LocationsItem({ favoriteCity }) {
   const dispatch = useDispatch();
 
   const handlerSetCurrentCity = () => {
-    dispatch({type: SET_CURRENT_CITY, cityName: favoriteCity})
+    dispatch(setCurrentCity(favoriteCity));
   }
 
   const handlerRemoveFavoriteCity = () => {
-    dispatch({type: REMOVE_CITY_FROM_FAVORITES, cityToRemove: favoriteCity})
+    dispatch(removeCityFromFavorites(favoriteCity))
   }
 
   return (

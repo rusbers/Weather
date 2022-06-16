@@ -1,20 +1,20 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_FAVORITE_CITY } from "../../js/store/store";
+import { addFavoriteCity } from "../../js/store/action/actionCreators";
 
 function WeatherNow() {
   const dispatch = useDispatch()
-  const currentForecast = useSelector(state => state.currentForecast);
+  const currentForecast = useSelector(state => state.forecast.currentForecast);
   const { degree, iconLink, city } = currentForecast;
 
-  const favoriteCities = useSelector(state => state.favoriteCities)
+  const favoriteCities = useSelector(state => state.favorites.favoriteCities)
 
   const handlerAddToFavorite = (cityName) => {
     const [isCityinList] = favoriteCities.filter(city => city === cityName);
 
     if (isCityinList === cityName) return;
 
-    dispatch({type: ADD_FAVORITE_CITY, newFavoriteCity: cityName})
-  }   
+    dispatch(addFavoriteCity(cityName))
+  }
 
   return (
     <>

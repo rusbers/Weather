@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import getDate from "../../js/date";
 
 function WeatherDetails() {
-  const currentForecast = useSelector(state => state.currentForecast);
+  const currentForecast = useSelector(state => state.forecast.currentForecast);
   const { degree, city, howFeels, weather, sunsetTime, sunriseTime } = currentForecast;
 
   return (

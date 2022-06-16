@@ -1,6 +1,6 @@
 import getDate from "../../js/date";
 
-function ForecastItem({forecastData}) {
+function ForecastItem({ forecastData }) {
 
   const { time, temperature, feelsLike, icon, weather } = forecastData;
 
