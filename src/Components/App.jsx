@@ -1,10 +1,12 @@
 import React, { useEffect } from "react"
-import SearchCity from "./SearchCity"
-import WeatherContent from "./WeatherContent"
+import { WeatherPage } from "./WeatherPage";
 import { API, forecastRequest } from "../../js/network";
 import { WeatherInfo } from "../../js/storage";
 import { setNextForecast, setCurrentForecast } from "../../js/store/action/actionCreators";
 import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Layout } from "./Layout"
+import { HelpPage } from './HelpPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -40,12 +42,14 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <div className="weather-content">
-        <SearchCity />
-        <WeatherContent />
-      </div>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<WeatherPage />} />
+          <Route path='help-page' element={<HelpPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

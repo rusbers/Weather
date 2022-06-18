@@ -5,7 +5,7 @@ import { getFavoriteCities } from "../../js/storage";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentCity, setFavoriteCities } from "../../js/store/action/actionCreators";
 
-function WeatherContent() {
+function WeatherOptions() {
   const favoriteCities = useSelector(state => state.favorites.favoriteCities);
   const dispatch = useDispatch();
 
@@ -25,11 +25,11 @@ function WeatherContent() {
   }, [favoriteCities])
 
   return (
-    <div className="weather-content__inner">
+    <div className="weather-options">
       <Tabs />
       <Locations />
     </div>
   )
 }
 
-export default WeatherContent
+export default WeatherOptions

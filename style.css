@@ -38,7 +38,7 @@ a {
   padding: 0 10px;
 }
 
-.weather-content {
+.content {
   width: 621px;
   height: 462px;
   margin: 0 auto;
@@ -81,7 +81,13 @@ a {
   cursor: pointer;
 }
 
-.weather-content__inner {
+.content__weather {
+  height: 462px;
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-options {
   display: flex;
   min-height: calc(100% - 44px);
   position: relative;
@@ -350,4 +356,40 @@ a {
 
 .error::placeholder {
   color: #000;
+}
+
+.content__help {
+  height: 462px;
+  padding: 8px;
+}
+
+.content__help-inner {
+  height: 462px;
+}
+
+.content__help-inner h2 {
+  margin:  0;
+  margin-bottom: 8px;
+  font-size: 28px;
+  text-align: center;
+}
+
+.content__help-inner ul {
+  padding-left: 30px;
+}
+
+.content__help-inner li {
+  list-style: initial;
+  margin:  0;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+
+.content__help-inner p {
+  text-align: center;
+}
+
+.link {
+  text-align: center;
+  text-decoration: underline;
 }
