@@ -1,8 +1,16 @@
 import SearchCity from "./SearchCity"
 import WeatherOptions from "./WeatherOptions"
 import { Link } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux";
+import { setForecastData } from "../../js/customHooks/setForecastData";
 
 function WeatherPage() {
+  const dispatch = useDispatch();
+
+  const currentCity = useSelector(state => state.forecast.currentCity);
+
+  setForecastData(currentCity, dispatch);
+
   return (
     <div className="content__weather">
       <SearchCity />

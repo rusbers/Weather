@@ -1,16 +1,25 @@
 import * as ACTION from './actionNames';
 
-const setCurrentCity = (payload) => ({ type: ACTION.SET_CURRENT_CITY, payload });
+function actionCreator(type) {
+  return (payload) => {
+    return {
+      type,
+      payload
+    }
+  }
+}
 
-const setCurrentForecast = (payload) => ({ type: ACTION.SET_CURRENT_FORECAST, payload });
+const setCurrentCity = actionCreator(ACTION.SET_CURRENT_CITY);
 
-const setNextForecast = (payload) => ({ type: ACTION.SET_NEXT_FORECAST, payload });
+const setCurrentForecast = actionCreator(ACTION.SET_CURRENT_FORECAST);
 
-const setFavoriteCities = (payload) => ({ type: ACTION.SET_FAVORITE_CITIES, payload });
+const setNextForecast = actionCreator(ACTION.SET_NEXT_FORECAST);
 
-const addFavoriteCity = (payload) => ({ type: ACTION.ADD_FAVORITE_CITY, payload });
+const setFavoriteCities = actionCreator(ACTION.SET_FAVORITE_CITIES);
 
-const removeCityFromFavorites = (payload) => ({ type: ACTION.REMOVE_CITY_FROM_FAVORITES, payload });
+const addFavoriteCity = actionCreator(ACTION.ADD_FAVORITE_CITY);
+
+const removeCityFromFavorites = actionCreator(ACTION.REMOVE_CITY_FROM_FAVORITES);
 
 
 export {
