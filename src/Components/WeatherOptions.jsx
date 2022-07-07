@@ -3,7 +3,8 @@ import Tabs from "./Tabs";
 import Locations from "./Locations";
 import { getFavoriteCities } from "../../js/storage";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentCity, setFavoriteCities } from "../../js/store/action/actionCreators";
+import { setCurrentCity } from "../../store/slices/forecastSlice";
+import { setFavoriteCities } from '../../store/slices/favoriteCitiesSlice';
 
 function WeatherOptions() {
   const favoriteCities = useSelector(state => state.favorites.favoriteCities);

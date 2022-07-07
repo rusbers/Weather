@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
-import { setCurrentCity, removeCityFromFavorites } from "../../js/store/action/actionCreators";
+import { removeCityFromFavorites } from '../../store/slices/favoriteCitiesSlice';
+import { setCurrentCity } from '../../store/slices/forecastSlice';
 
 function LocationsItem({ favoriteCity }) {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { addFavoriteCity } from "../../js/store/action/actionCreators";
+import { addFavoriteCity } from '../../store/slices/favoriteCitiesSlice';
 
 function WeatherNow() {
   const dispatch = useDispatch()

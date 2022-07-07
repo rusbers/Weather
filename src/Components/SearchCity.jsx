@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { setCurrentCity } from "../../js/store/action/actionCreators";
+import { setCurrentCity } from '../../store/slices/forecastSlice';
 import { useDispatch } from "react-redux";
 
 function SearchCity() {

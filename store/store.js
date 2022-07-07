@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import forecastReducer from './reducers/forecastReducer';
-import favoriteCitiesReducer from './reducers/favoriteCitiesReducer';
+import {reducer as favoriteCitiesReducer} from './slices/favoriteCitiesSlice';
+import {reducer as forecastReducer } from './slices/forecastSlice';
 
 const store = configureStore({
   reducer: {
@@ -10,7 +10,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }),
+    })
 })
 
 export { store };

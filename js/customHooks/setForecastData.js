@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { API } from "../network";
 import { forecastRequest } from "../network";
 import { WeatherInfo } from "../storage";
-import { setCurrentForecast, setNextForecast } from "../store/action/actionCreators";
+import { setCurrentForecast, setNextForecast } from '../../store/slices/forecastSlice';
 
 async function getCurrentForecast(cityName, dispatch) {
   try {

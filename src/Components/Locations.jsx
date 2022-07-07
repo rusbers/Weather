@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 function Locations() {
   const favoriteCities = useSelector(state => state.favorites.favoriteCities)
 
+  console.log(favoriteCities);
+
   return (
     <div className="locations">
       <p className="locations__title">{'Added Locations:'}</p>
