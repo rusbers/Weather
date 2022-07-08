@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import getDate from "../../js/date";
+import getDate from "../../network/date";
 
 function WeatherDetails() {
   const currentForecast = useSelector(state => state.forecast.currentForecast);

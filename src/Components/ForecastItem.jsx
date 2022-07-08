@@ -1,4 +1,4 @@
-import getDate from "../../js/date";
+import getDate from "../../network/date";
 
 function ForecastItem({ forecastData }) {
 

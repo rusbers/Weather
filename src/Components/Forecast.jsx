@@ -1,5 +1,5 @@
 import ForecastItem from "./ForecastItem";
-import { ForecastData } from "../../js/storage";
+import { ForecastData } from "../../network/storage";
 import { useSelector } from "react-redux";
 
 function Forecast() {

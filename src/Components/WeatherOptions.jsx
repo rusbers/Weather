@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Tabs from "./Tabs";
 import Locations from "./Locations";
-import { getFavoriteCities } from "../../js/storage";
+import { getFavoriteCities } from "../../network/storage";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentCity } from "../../store/slices/forecastSlice";
 import { setFavoriteCities } from '../../store/slices/favoriteCitiesSlice';
