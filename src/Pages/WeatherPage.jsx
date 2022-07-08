@@ -1,5 +1,5 @@
-import SearchCity from "./SearchCity"
-import WeatherOptions from "./WeatherOptions"
+import SearchCity from "../Components/SearchCity"
+import WeatherOptions from "../Components/WeatherOptions"
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import { setForecastData } from "../../js/customHooks/setForecastData";
