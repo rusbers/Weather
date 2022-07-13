@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrentForecast, fetchFutureForecast } from "../../store/slices/forecastSlice";
 import { useEffect } from "react";
+import { Box } from "@mui/material";
 
 function WeatherPage() {
   const dispatch = useDispatch();
@@ -18,13 +19,17 @@ function WeatherPage() {
   }, [currentCity])
 
   return (
-    <div className="content__weather">
+    <Box
+      display='flex'
+      height='460px'
+      flexDirection='column'
+    >
       <SearchCity />
       <WeatherOptions />
-      <div className="link">
+      <Box textAlign='center'>
         <Link to="/help-page">How does it work?</Link>
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }
 
