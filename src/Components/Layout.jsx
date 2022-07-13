@@ -1,12 +1,21 @@
 import { Outlet } from "react-router-dom";
+import { Box } from "@mui/material";
+import { Grid } from "@mui/material";
 
 function Layout() {
   return (
-    <div className="container">
-      <div className="content">
+    <Box p='0 10px'>
+      <Grid 
+        container
+        direction='column'
+        width='620px' 
+        height='460px' 
+        m='0 auto' 
+        border='1px solid #000'
+      >
         <Outlet />
-      </div>
-    </div>
+      </Grid>
+    </Box>
   )
 }
 
